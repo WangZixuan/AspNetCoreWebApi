@@ -5,9 +5,10 @@
 
     public class HomeController : Controller
     {
-        public JsonResult Index(int i)
+        [Route("Home/Details")]
+        public JsonResult Details(int id)
         {
-            return Json(_employeeRepository.GetById(i));
+            return Json(_employeeRepository.GetById(id));
         }
 
         public HomeController(IEmployeeRepository employeeRepository)
