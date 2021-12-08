@@ -25,12 +25,12 @@ namespace WebApplication1
             }
 
             app.UseStaticFiles();
-            app.UseRouting();
 
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-            //});
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }
