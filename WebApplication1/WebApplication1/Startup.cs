@@ -13,8 +13,8 @@ namespace WebApplication1
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddSingleton<IEmployeeRepository, HardCodeEmployeeRepository>();
-            services.AddControllers();
         }
 
         public void Configure(IApplicationBuilder app, IHostEnvironment env)
@@ -26,11 +26,7 @@ namespace WebApplication1
 
             app.UseStaticFiles();
 
-            app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

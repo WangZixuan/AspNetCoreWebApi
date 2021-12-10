@@ -3,28 +3,11 @@
     using Microsoft.AspNetCore.Mvc;
     using WebApplication1.Models;
 
-    [Route("[controller]")]
     public class HomeController : Controller
     {
-        [Route("")]
-        [Route("[action]")]
-        [Route("/")] // or [Route("~/")]
-        public JsonResult Index()
+        public JsonResult Details(int id, string name)
         {
-            return Json(_employeeRepository.GetById(0));
-        }
-
-        [Route("[action]/{id?}")]
-        public JsonResult Details(int id)
-        {
-            // id will be 0 if not giben
-            return Json(_employeeRepository.GetById(id));
-        }
-
-        public JsonResult Details2(int? id)
-        {
-            // id will be null if not given
-            return Json(_employeeRepository.GetById(id??0));
+            return new JsonResult(new { id, name });
         }
 
         public HomeController(IEmployeeRepository employeeRepository)
