@@ -9,7 +9,7 @@
         {
             if (id > 3)
             {
-                Response.StatusCode = 404;
+                throw new Exception();
             }
 
             return new JsonResult(new { id, Response.StatusCode });
