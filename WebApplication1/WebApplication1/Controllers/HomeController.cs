@@ -5,9 +5,14 @@
 
     public class HomeController : Controller
     {
-        public JsonResult Details(int id, string name)
+        public IActionResult Details(int id)
         {
-            return new JsonResult(new { id, name });
+            if (id > 3)
+            {
+                Response.StatusCode = 404;
+            }
+
+            return new JsonResult(new { id, Response.StatusCode });
         }
 
         public HomeController(IEmployeeRepository employeeRepository)
